@@ -45,3 +45,10 @@ resource "cloudflare_record" "mx_alt4" {
   type     = "MX"
   priority = 10
 }
+
+resource "cloudflare_record" "spf" {
+  zone_id  = var.zone_id
+  name     = var.subdomain
+  value    = "v=spf1 include:_spf.google.com ~all"
+  type     = "TXT"
+}
